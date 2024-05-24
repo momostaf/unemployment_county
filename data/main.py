@@ -83,7 +83,7 @@ gdf_merged = pd.merge(gdf, df_long2, on=['FIPS_Code'])
 print(gdf_merged)
 
 #Plot unemployment in 2000
-gdf_merged.plot(column="Unemp_rate", cmap='OrRd', scheme='quantiles', legend=True, figsize=(15, 10))
+gdf_merged.plot(column="Unemp_rate", cmap='OrRd', scheme='percentiles', legend=True, figsize=(15, 10))
 plt.show()
 
 
