@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 
 import geopandas
-from geodatasets import get_path
+#from geodatasets import get_path
 
 #Load data and initial cleaning 
 df = pd.read_excel("Unemployment.xlsx", header=None) 
