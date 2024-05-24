@@ -84,7 +84,7 @@ gdf_merged = pd.merge(gdf, df_long2, on=['FIPS_Code'])
 print(gdf_merged)
 
 #Plot unemployment in 2000
-fig, ax = plt.subplots(1, 1, figsize=(12, 8))
+fig, ax = plt.subplots(1, 1, figsize=(12, 6.5))
 
 # Define the colormap and normalize
 cmap = plt.get_cmap('OrRd')
@@ -98,12 +98,7 @@ sm = cm.ScalarMappable(cmap=cmap, norm=norm)
 sm.set_array([])
 cbar = fig.colorbar(sm, ax=ax)
 cbar.set_label('Unemployment Rate')
-
-
-
-
-#gdf_merged.plot(column="Unemp_rate", cmap='OrRd', scheme='percentiles', legend=True, figsize=(15, 10))
+ax.set(title='Unemployment rate in US counties in 2000')
+ax.title.set_fontsize(15)
+plt.savefig('unemployment_rate_2000.png', dpi=400)
 plt.show()
-
-
-print("This is test")
