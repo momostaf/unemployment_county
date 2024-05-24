@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-
+import matplotlib.colors as colors
+import matplotlib.cm as cm
 
 import geopandas
 #from geodatasets import get_path
@@ -83,7 +84,25 @@ gdf_merged = pd.merge(gdf, df_long2, on=['FIPS_Code'])
 print(gdf_merged)
 
 #Plot unemployment in 2000
-gdf_merged.plot(column="Unemp_rate", cmap='OrRd', scheme='percentiles', legend=True, figsize=(15, 10))
+fig, ax = plt.subplots(1, 1, figsize=(12, 8))
+
+# Define the colormap and normalize
+cmap = plt.get_cmap('OrRd')
+norm = colors.Normalize(vmin=gdf_merged["Unemp_rate"].min(), vmax=gdf_merged["Unemp_rate"].max())
+
+# Plot the GeoDataFrame
+gdf_merged.plot(column="Unemp_rate", cmap=cmap, linewidth=0.8, ax=ax, edgecolor='0.8')
+
+# Create colorbar
+sm = cm.ScalarMappable(cmap=cmap, norm=norm)
+sm.set_array([])
+cbar = fig.colorbar(sm, ax=ax)
+cbar.set_label('Unemployment Rate')
+
+
+
+
+#gdf_merged.plot(column="Unemp_rate", cmap='OrRd', scheme='percentiles', legend=True, figsize=(15, 10))
 plt.show()
 
 
